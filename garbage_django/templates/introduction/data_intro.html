@@ -1,0 +1,44 @@
+{% extends 'introduction/base2.html' %}
+{% block title %}数据集介绍{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1><br>数据集介绍</h1>
+        <p class="lead">数据集由<a href="https://developer.huaweicloud.com/hero/forum.php?mod=viewthread&tid=24106">华为云官方</a>提供。加入<a href="https://pan.baidu.com/s/1SulD2MqZx_U891JXeI2-2g">野生数据集</a>一起训练。</p>
+      </div>
+
+      <h3>种类介绍</h3>
+      <p>数据集一共有40类 <br></p>
+      <table class ="table table-hover">
+        <thead>
+            <tr>
+                <th class = text-center>标签号</th>
+                <th class = text-center>种类</th>
+                <th class = text-center>标签号</th>
+                <th class = text-center>种类</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in dataset_label_list %}
+            <tr>
+                <td class = text-center>{{d.label1}}</td>
+                <td class = text-center>{{d.data1}}</td>
+                <td class = text-center>{{d.label2}}</td>
+                <td class = text-center>{{d.data2}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        <p>将野生数据集跟官方数据集合并，一共<strong class="text-danger">19049</strong>条数据。数据分布下图所示。<br></p>
+        
+        <img src="../../static/images/dataset.jpg" alt="..." class="img-rounded" width="100%px" height="400px">
+    
+
+      <h3>数据集准备</h3>
+      <p>从华为云下载的官方数据集的格式和EffcientNet的所需的数据集格式有差别，需要通过
+          <a href="https://gitee.com/shen_wenxin0510/garbage_classify/blob/master/prepare_data/prepare_data.py">数据准备代码</a>
+          将其转为所要的数据集格式。其中<strong class="text-danger">train:val = 8:2</strong><br><br><br><br><br><br>
+      
+
+</div><!--/.container-->
+{% endblock %}

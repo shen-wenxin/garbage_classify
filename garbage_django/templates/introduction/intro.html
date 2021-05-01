@@ -1,0 +1,64 @@
+{% extends 'introduction/base.html' %}
+{% block title %}介绍{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row row-offcanvas row-offcanvas-right">
+
+    <div class="col-xs-12 col-sm-9">
+      <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+      </p>
+      <div class="jumbotron">
+        <h1>介绍</h1>
+        <p>对数据集、model、实验结果的简单介绍</p>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-lg-4">
+          <h2>数据集</h2>
+          <p>采用华为云提供的数据集以及网上的野生数据集<br><br></p>
+          <p><a class="btn btn-default" href="/intro/dataset/" role="button">查看详情 &raquo;</a></p>
+        </div><!--/.col-xs-6.col-lg-4-->
+        <div class="col-xs-6 col-lg-4">
+          <h2>模型介绍</h2>
+          <p>采用efficientNet。<br><br><br></p>
+          <p><a class="btn btn-default" href="/intro/model/" role="button">查看详情 &raquo;</a></p>
+        </div><!--/.col-xs-6.col-lg-4-->
+        <div class="col-xs-6 col-lg-4">
+            <h2>模型微调</h2>
+            <p>在baseline的基础上进行了部分微调跟迁移学习。<br><br></p>
+            <p><a class="btn btn-default" href="/intro/finetune/" role="button">查看详情&raquo;</a></p>
+          </div><!--/.col-xs-6.col-lg-4-->
+        <div class="col-xs-6 col-lg-4">
+          <h2>结果分析</h2>
+          <p>在上节课的测试中准确率为98.1%，后续补上了对比试验。<br><br></p>
+          <p><a class="btn btn-default" href="/intro/result/" role="button">查看详情 &raquo;</a></p>
+        </div><!--/.col-xs-6.col-lg-4-->
+
+        <div class="col-xs-6 col-lg-4">
+          <h2>参考文献</h2>
+          <p>在该项目中用到的参考文献。 <br><br><br></p>
+          <p><a class="btn btn-default" href="/intro/reference/" role="button">查看详情 &raquo;</a></p>
+        </div><!--/.col-xs-6.col-lg-4-->
+        <div class="col-xs-6 col-lg-4">
+          <h2>网站说明</h2>
+          <p>该网站的使用介绍 <br><br><br></p>
+          <p><a class="btn btn-default" href="/intro/web_intro/" role="button">查看详情 &raquo;</a></p>
+        </div><!--/.col-xs-6.col-lg-4-->
+      </div><!--/row-->
+    </div><!--/.col-xs-12.col-sm-9-->
+
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+      <div class="list-group">
+        <a href="#" class="list-group-item active">整体介绍</a>
+        <a href="/intro/dataset/" class="list-group-item">数据集</a>
+        <a href="/intro/model/" class="list-group-item">模型介绍</a>
+        <a href="/intro/finetune/" class="list-group-item">模型微调</a>
+        <a href="/intro/result/" class="list-group-item">结果分析</a>
+        <a href="/intro/reference/" class="list-group-item">参考文献</a>
+        <a href="/intro/web_intro/" class="list-group-item">网站说明</a>
+      </div>
+    </div><!--/.sidebar-offcanvas-->
+  </div><!--/row-->
+
+</div><!--/.container-->
+{% endblock %}

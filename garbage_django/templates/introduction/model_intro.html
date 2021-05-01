@@ -1,0 +1,77 @@
+{% extends 'introduction/base2.html' %}
+{% block title %}model介绍{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1><br>model介绍</h1>
+        <p class="lead">采用<a href="https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet">efficientNet</a>作为基准模型。</p>
+      </div>
+
+      <h3>代码</h3>
+      <p>代码实现:<a href="https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet">tensorflow版本</a>/
+        <a href="https://github.com/lukemelas/EfficientNet-PyTorch">第三方实现的PyTorch代码</a>
+        </p>
+      
+        <h3>总体思想</h3>
+        <p> 在研究中通常会通过放大模型结构来获得更大精度。该论文系统的研究了 <strong">模型放缩</strong>
+            并验证了<strong >网络深度、宽度和分辨率之间的平衡可以导致更好的性能表现。</strong>
+           基于这样的观察，我们提出了一种新的缩放方法——使用一个简单高效的复合系数来完成对深度/宽度/分辨率所有维度的统一缩放。
+            作者在<strong >MobileNets</strong>和<strong class=>ResNet</strong>上展示了这种缩放方法的高效性。<br>
+            为了进一步研究，我们使用神经架构搜索设计了一个baseline网络，并且将模型放大获得一系列模型，我们称之为<strong >EfficientNets</strong>，它的精度和效率比之前所有的卷积网络都好。
+         </p>
+  
+        <h3>介绍</h3>
+        <p>为了获取更好的精度，往往采用放大卷积神经网络的方法。但是<B>任意缩放需要繁琐的人工调参同时可能产生的是一个次优的精度和效率。</B></p>
+        <p>在本篇论文中，我们想要研究和重新思考放大<B>CNN</B>的过程,提出一个问题：是否存在一个原则性的放大CNN的方法实现更好的精度和效率？我们的实验研究表明了平衡深度、宽度和分辨率这三个维度是至关重要的，令人惊讶的是这样的平衡可以通过简单的使用一组常量比率来缩放每一个维度。</p>
+        <p>实验研究表明平衡深度、宽度和分辨率这三个维度是至关重要的，作者提出了一个简单高效的复合缩放方法，使用一组<strong>固定的缩放系数</strong>统一缩放网络深度、宽度和分辨率。</B></p>
+        <p>
+            我们在已经存在的<B>MobileNets</B>和<B>ResNets</B>ResNets上展示了我们的缩放方法可以工作得很好，值得注意的是，模型缩放的高效性严重地依赖于baseline网络，为了进一步研究，我们使用网络结构搜索发展了一种新的baseline网络，然后将它缩放来获得一系列模型，称之为<B>
+                EfficientNets
+            </B>。</p>
+            <div class="text-center">
+                <img src="../../static/images/model.jpg" alt="..." class="img-rounded" width="100%px" >
+                <p class = text-center>图1.作者方法和传统方法之间的区别</p>
+            </div>
+            <div class="text-center">
+                <img src="../../static/images/model2.jpg" alt="..." class="img-rounded" width="60%" >
+                    <p class = text-center>图2.总结了ImageNet,可见efficientNet优于其他网络</p>
+            </div>
+    
+
+        <h3>数学公式</h3>
+        <p>作者将放缩问题公式化，研究了不同方法并提出了新的放缩方法:</p>
+        <div class="row">
+            <div class="col-md-6 text-center"> <img src="../../static/images/model3.jpg" alt="..." class="img-rounded" width="80%px" >
+            </div>
+            <div class="col-md-6 text-center"> <img src="../../static/images/model4.jpg" alt="..." class="img-rounded" width="100%" >
+            </div>
+        </div>
+
+        <h3>Scaling Dimensions</h3>
+        <h4>深度</h4>
+        <p>更深的网络可以捕获到更丰富和更复杂的特征，在新任务上也可以泛化的更好。但是更深的网络由于梯度消失问题更难训练。尽管有一些技术，例如跨层连接、批量归一化等可以有效减缓训练问题，但是深层网络的精度回报减弱了：举个例子，ResNet-1000和ResNet-101具有类似的精度，即使它的层数更多。</p>
+        <h4>宽度</h4>
+        <p>缩放网络宽度也是一种常用的手段，正如之前讨论过的，更宽的网络可以捕捉到更细粒度的特征从而易于训练。然而，非常宽而又很浅的网络在捕捉高层次特征时有困难。</p>
+        <h4>Resolution</h4>
+        <p>使用更高分辨率的输入图像，ConvNets可能可以捕捉到更细粒度的模式。从最早的 224x224，现在有些ConvNets为了获得更高的精度选择使用 229x229 或者 331x331。目前，GPipe使用 480x480 的分辨率获得了最先进的ImageNet精度，更好的精度比如 600x600 也被广泛使用在目标检测网络中。</p>
+        <img src="../../static/images/model6.jpg" alt="..." class="img-rounded" width="100%" >
+
+        <h3>Compound Scaling</h3>
+        <p>我们经验上可以观察到不同缩放维度之间是不独立的，直观上来讲，对于分辨率更高的图像，我们应该增加网络深度，因为需要更大的感受野来帮助捕获更多像素点的类似特征，同时也应该增加网络宽度来获得更细粒度的特征。这些直觉指导着我们去协调平衡不同缩放维度而不是传统的单个缩放维度。</p>
+        <p><B>为了追去更好的精度和效率，在缩放时平衡网络所有维度至关重要。</B></p>
+        <p>事实上，之前的一些工作已经开始在追去任意缩放网络深度和宽度，但是他们仍然需要复杂的人工微调。在本篇论文中，我们提出了一个新的复合缩放方法——使用一个复合系数统一缩放网络宽度、深度和分辨率：</p>
+        <div class = text-center>
+            <img src="../../static/images/model7.jpg" alt="..." class="img-rounded" width="50%" >
+
+        </div>
+        <h4>EfficientNet Architecture</h4>
+        <div class = text-center>
+            <img src="../../static/images/model8.jpg" alt="..." class="img-rounded" width="75%" >
+
+        </div>
+        
+        
+      
+
+</div><!--/.container-->
+{% endblock %}

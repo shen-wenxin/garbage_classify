@@ -1,0 +1,150 @@
+{% extends 'introduction/base2.html' %}
+{% block title %}数据集介绍{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1><br>结果分析</h1>
+        <p class="lead">关于efficientNet微调前/微调后以及对比实验的结果介绍</p>
+      </div>
+
+      <h3>EffcientNet</h3>
+      <p>efficientNet默认参数<br></p>
+      <table class ="table table-hover">
+        <thead>
+            <tr>
+                <th class = text-center>name</th>
+                <th class = text-center>width_coefficient</th>
+                <th class = text-center>depth_coefficient</th>
+                <th class = text-center>resolution</th>
+                <th class = text-center>dropout_rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class = text-center>efficientnet-b0</td>
+                <td class = text-center>1.0</td>
+                <td class = text-center>1.0</td>
+                <td class = text-center>224</td>
+                <td class = text-center>0.2</td>
+            </tr>
+            <tr>
+                <td class = text-center>efficientnet-b1</td>
+                <td class = text-center>1.0</td>
+                <td class = text-center>1.0</td>
+                <td class = text-center>240</td>
+                <td class = text-center>0.2</td>
+            </tr>
+            <tr>
+                <td class = text-center>efficientnet-b2</td>
+                <td class = text-center>1.1</td>
+                <td class = text-center>1.2</td>
+                <td class = text-center>260</td>
+                <td class = text-center>0.3</td>
+            </tr>
+            <tr>
+                <td class = text-center>efficientnet-b3</td>
+                <td class = text-center>1.2</td>
+                <td class = text-center>1.4</td>
+                <td class = text-center>300</td>
+                <td class = text-center>0.3</td>
+            </tr>
+            <tr>
+                <td class = text-center>efficientnet-b4</td>
+                <td class = text-center>1.4</td>
+                <td class = text-center>1.8</td>
+                <td class = text-center>380</td>
+                <td class = text-center>0.4</td>
+            </tr>
+            <tr>
+                <td class = text-center>efficientnet-b5</td>
+                <td class = text-center>1.6</td>
+                <td class = text-center>2.2</td>
+                <td class = text-center>456</td>
+                <td class = text-center>0.4</td>
+            </tr>
+            <tr>
+                <td class = text-center>efficientnet-b6</td>
+                <td class = text-center>1.8</td>
+                <td class = text-center>2.6</td>
+                <td class = text-center>528</td>
+                <td class = text-center>0.5</td>
+            </tr>
+            <tr>
+                <td class = text-center>efficientnet-b7</td>
+                <td class = text-center>2.0</td>
+                <td class = text-center>3.1</td>
+                <td class = text-center>600</td>
+                <td class = text-center>0.5</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>分别训练了<code>efficientnet-b7/efficientNet-b6/efficientNet-b4</code>，效果相差不大。在测试集上准确率如下</p>
+        <table class ="table table-hover">
+            <thead>
+                <tr>
+                    <th class = text-center>name</th>
+                    <th class = text-center>epoch</th>
+                    <th class = text-center>batch_size</th>
+                    <th class = text-center>Accuracy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class = text-center>efficientnet-b4</td>
+                    <td class = text-center>15</td>
+                    <td class = text-center>20</td>
+                    <td class = text-center>98.187%</td>
+                </tr>
+                <tr>
+                    <td class = text-center>efficientnet-b6</td>
+                    <td class = text-center>15</td>
+                    <td class = text-center>20</td>
+                    <td class = text-center>97.747%</td>
+                </tr>
+                <tr>
+                    <td class = text-center>efficientnet-b7</td>
+                    <td class = text-center>15</td>
+                    <td class = text-center>20</td>
+                    <td class = text-center>97.747%</td>
+                </tr>
+            </tbody>
+            </table>
+        <p>最终选用<code>efficientNet-b4</code>来进行优化微调，微调后准确率下降为<code>96.951%</code>。</p>
+        
+      <h3>State of Art 对比试验结果</h3>
+      <p>利用<code>ResNet50</code>在相同的<code>epoch、batchsize</code>下做了对比试验，结果如下</p>
+      <table class ="table table-hover">
+        <thead>
+            <tr>
+                <th class = text-center>name</th>
+                <th class = text-center>epoch</th>
+                <th class = text-center>batch_size</th>
+                <th class = text-center>Accuracy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class = text-center>ResNet50</td>
+                <td class = text-center>15</td>
+                <td class = text-center>20</td>
+                <td class = text-center>83.1868%</td>
+            </tr>
+            <tr>
+                <td class = text-center>VGG</td>
+                <td class = text-center>15</td>
+                <td class = text-center>20</td>
+                <td class = text-center>90.2473%</td>
+            </tr>
+            <tr>
+                <td class = text-center>AlexNet</td>
+                <td class = text-center>15</td>
+                <td class = text-center>20</td>
+                <td class = text-center>86%</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>由于再抢GPU就要被师兄打了，所以没有再进行进一步实验</p>
+      
+
+</div><!--/.container-->
+{% endblock %}

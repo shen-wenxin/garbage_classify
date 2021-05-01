@@ -1,0 +1,34 @@
+{% extends 'introduction/base2.html' %}
+{% block title %}微调{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1><br>微调</h1>
+        <p class="lead">在baseline的基础上进行了微调和迁移学习。</p>
+      </div>
+
+      <h3>代码</h3>
+      <p><a href="https://gitee.com/shen_wenxin0510/garbage_classify/blob/master/efficientNet/src/train.py">代码实现</a>
+        </p>
+  
+        <h3>迁移学习</h3>
+        <p>迁移学习分为以下几步：将数据集转为所需格式、训练、模型微调、训练<br></P>
+        
+        <h4>数据集准备</h4>
+        <p>详见数据集部分<br></P>
+        <h4>数据增强</h4>
+        <li>进行随机水平/垂直翻转</li>
+        <li>进行随机比例缩放翻转</li>
+        <li>进行随仿射变换</li>
+        <h4>baseline 微调尝试</h4>
+        <li>标签平滑</li>
+        <code>criterion = LabelSmoothSoftmaxCE()</code>
+        <li>使用Adam优化器</li>
+        <code>optimizer = optim.Adam(params_to_update, lr=LR, betas=(0.9, 0.999), eps=1e-9)</code>
+        <li>学习率调整</li>
+        <code>scheduler = lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.7, patience=3, verbose=True)</code>
+        
+      
+
+</div><!--/.container-->
+{% endblock %}

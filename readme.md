@@ -6,7 +6,7 @@
 
 ### 首页
 
-![首页](https://gitee.com/shen_wenxin0510/img/blob/master/image-20210502175017215.png)
+![首页](https://github.com/shen-wenxin/readme_pic/blob/master/image-20210502175017215.png)
 
 <img src="C:\Users\shen_\AppData\Roaming\Typora\typora-user-images\image-20210502175017215.png" alt="image-20210502175017215" style="zoom: 33%;" />
 

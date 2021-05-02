@@ -6,6 +6,7 @@ from . import configs
 from .predict import predictor
 import os
 import shutil
+import time
 # Create your views here.
 def classify(request):
     # 判断是否为 post 方法提交 
@@ -27,12 +28,14 @@ def classify(request):
                 name=name,
                 headimg=img
             )
-            message = "上传成功"
             
             new_img.save()
             file_path = os.path.join(configs.MEDIA_IMG_PATH,name)
             # 得到结果之后可以将本地文件
+            start = time.time()
             label = configs.LABEL_MAP[predictor.predict(file_path)[0]]
+            end = time.time()
+            print(end - start)
             
             
             message = "您的图片的分类结果为：{}".format(label)

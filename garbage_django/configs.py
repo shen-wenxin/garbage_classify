@@ -1,1 +1,0 @@
-IMG_TYPE_ERROR = "只能对jpg/png格式的图片进行分类哦"

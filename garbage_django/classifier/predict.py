@@ -31,7 +31,7 @@ class ImgPrediction:
         return [k for (k, v) in dct.items() if v == value]
 
     def predict(self,img_dir):
-        img = Image.open(img_dir)
+        img = Image.open(img_dir).convert('RGB')
         inputs = self.data_transforms(img)
         inputs.unsqueeze_(0)
         inputs = Variable(inputs)

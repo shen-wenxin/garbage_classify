@@ -6,19 +6,15 @@
 
 ### 首页
 
-![首页](https://github.com/shen-wenxin/readme_pic/blob/master/image-20210502175017215.png)
+![首页](https://gitee.com/shen_wenxin0510/readme-pictures/raw/master/image-20210502175017215.png)
 
-<img src="C:\Users\shen_\AppData\Roaming\Typora\typora-user-images\image-20210502175017215.png" alt="image-20210502175017215" style="zoom: 33%;" />
 
 ### 介绍界面
-
-<img src="C:\Users\shen_\AppData\Roaming\Typora\typora-user-images\image-20210502175254713.png" alt="image-20210502175254713" style="zoom:33%;" />
-
+![介绍界面](https://gitee.com/shen_wenxin0510/readme-pictures/raw/master/image-20210502175254713.png)
 ### 分类界面
 
-<img src="C:\Users\shen_\AppData\Roaming\Typora\typora-user-images\image-20210502175901239.png" alt="image-20210502175901239" style="zoom: 50%;" />![image-20210502175940404](C:\Users\shen_\AppData\Roaming\Typora\typora-user-images\image-20210502175940404.png)
-
-<img src="C:\Users\shen_\AppData\Roaming\Typora\typora-user-images\image-20210502175940404.png" alt="image-20210502175940404" style="zoom:33%;" />
+![分类上传](https://gitee.com/shen_wenxin0510/readme-pictures/raw/master/image-20210502175901239.png)
+![分类结果](https://gitee.com/shen_wenxin0510/readme-pictures/raw/master/image-20210502175940404.png)
 
 ## 项目概述
 

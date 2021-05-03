@@ -1,6 +1,7 @@
 # 垃圾分类网站
 
 哈工大(深圳)软B 张正老师项目组
+[gitee](https://gitee.com/shen_wenxin0510/garbage_classify)/[github](https://github.com/shen-wenxin/garbage_classicy)
 
 ## 效果展示
 
